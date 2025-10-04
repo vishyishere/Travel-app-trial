@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+﻿import React, { useState } from "react";
 import { SafeAreaView, Text, TextInput, Button, FlatList, View, StyleSheet, Alert, TouchableOpacity } from "react-native";
 import axios from "axios";
 
@@ -13,8 +13,8 @@ export default function App() {
   const [lat, setLat] = useState("");
   const [lng, setLng] = useState("");
 
-  // For emulator use 127.0.0.1:4000. For phone use LAN ip:4000
-  const backendUrl = "http://192.168.1.33:4000";
+  // LIVE deployed backend on Render (HTTPS)
+  const backendUrl = "https://travel-app-trial.onrender.com";
 
   const fetchSuggestions = async () => {
     if (!budget) return Alert.alert("Enter budget");
@@ -37,7 +37,7 @@ export default function App() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.title}>Budget Travel � Demo</Text>
+      <Text style={styles.title}>Budget Travel — Demo</Text>
 
       <View style={{ flexDirection: "row", gap: 8 }}>
         <TextInput
@@ -76,9 +76,9 @@ export default function App() {
             {item.distanceKm != null ? <Text>Distance: {item.distanceKm} km</Text> : null}
             <Text style={{ marginTop: 6, fontWeight: "600" }}>Breakdown:</Text>
             {item.breakdown?.map((b, i) => (
-              <Text key={i}> {b.label}: ?{b.amount}</Text>
+              <Text key={i}> {b.label}: ₹{b.amount}</Text>
             ))}
-            <Text style={{ marginTop: 8, fontWeight: "700" }}>Total: ?{item.totalEstimate}</Text>
+            <Text style={{ marginTop: 8, fontWeight: "700" }}>Total: ₹{item.totalEstimate}</Text>
             {item.overBudget ? <Text style={{ color: "red" }}>Over budget</Text> : null}
           </View>
         )}
