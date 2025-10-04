@@ -14,7 +14,7 @@ export default function App() {
   const [lng, setLng] = useState("");
 
   // For emulator use 127.0.0.1:4000. For phone use LAN ip:4000
-  const backendUrl = "http://127.0.0.1:4000";
+  const backendUrl = "http://192.168.1.33:4000";
 
   const fetchSuggestions = async () => {
     if (!budget) return Alert.alert("Enter budget");
